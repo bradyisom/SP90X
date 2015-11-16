@@ -1,0 +1,23 @@
+{
+  "name": "sp90x",
+  "version": "1.0.0",
+  "authors": [
+    "Brady Isom <bradyisom@gmail.com>"
+  ],
+  "description": "SP90X tracking software",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-material": "~0.11.4",
+    "angularfire": "~1.1.3",
+    "firebase": "~2.3.1",
+    "angular": "~1.4.7"
+  }
+}

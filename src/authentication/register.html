@@ -1,0 +1,68 @@
+<md-content layout="column" layout-padding flex>
+    <h2>Register</h2>
+    <form name="registrationForm" layout="column" flex>
+        <div layout="row" layout-sm="column">
+            <md-input-container flex-gt-sm="grow">
+                <label>First Name</label>
+                <input type="text" name="firstName"
+                    required
+                    ng-model="ctrl.firstName">
+                <div ng-messages="registrationForm.firstName.$error"
+                    ng-if="registrationForm.firstName.$touched">
+                    <div ng-message="required">This field is required</div>
+                </div>
+            </md-input-container>
+            <md-input-container flex-gt-sm="grow">
+                <label>Last Name</label>
+                <input type="text" name="lastName"
+                    required
+                    ng-model="ctrl.lastName">
+                <div ng-messages="registrationForm.lastName.$error"
+                    ng-if="registrationForm.lastName.$touched">
+                    <div ng-message="required">This field is required</div>
+                </div>
+            </md-input-container>
+        </div>
+        <div layout="row" layout-sm="column">
+            <md-input-container flex-gt-sm="grow">
+                <label>Email</label>
+                <input type="email" name="email"
+                    required
+                    ng-model="ctrl.email">
+                <div ng-messages="registrationForm.email.$error"
+                    ng-if="registrationForm.email.$touched">
+                    <div ng-message="required">This field is required</div>
+                    <div ng-message="email">This is not a valid email address!</div>
+                </div>
+            </md-input-container>
+        </div>
+        <div layout="row" layout-sm="column">
+            <md-input-container flex-gt-sm="grow">
+                <label>Password</label>
+                <input type="password" name="password"
+                    required 
+                    ng-model="ctrl.password">
+                <div ng-messages="registrationForm.password.$error"
+                    ng-if="registrationForm.password.$touched">
+                    <div ng-message="required">This field is required</div>
+                </div>
+            </md-input-container>
+            <md-input-container flex-gt-sm="grow">
+                <label>Confirm Password</label>
+                <input type="password" name="passwordConfirm"
+                    required
+                    compare-to="ctrl.password"
+                    ng-model="ctrl.passwordConfirm">
+                <div ng-messages="registrationForm.passwordConfirm.$error"
+                    ng-if="registrationForm.passwordConfirm.$touched">
+                    <div ng-message="required">This field is required</div>
+                    <div ng-message="compareTo">Passwords must match!</div>
+                </div>
+            </md-input-container>
+        </div>
+        <md-button class="md-raised md-primary"
+            ng-click="ctrl.register(registrationForm)">
+            Register
+        </md-button>        
+    </form>
+</md-content>

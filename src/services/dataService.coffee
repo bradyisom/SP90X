@@ -1,7 +1,34 @@
-class DataService
-    constructor: ->
-        @ref = new Firebase('https://sp90x.firebaseio.com')
+angular.module('sp90x').service 'appData', class DataService
+    constructor: (@$firebaseAuth, @$firebaseObject, @$location, @$rootScope)->
+        @URL = 'https://sp90x.firebaseio.com'
+        @auth = @$firebaseAuth(new Firebase(@URL))
+        
+        @auth.$onAuth (authData)=>
+            console.log 'onAuth', authData?.uid
+            if authData
+                @user = @$firebaseObject(new Firebase("#{@URL}/users/#{authData.uid}"))
+                @user.$bindTo(@$rootScope, 'user').then =>
+                    console.log @$rootScope.user
+            else if @user
+                @user.$destroy()
+                @$rootScope.user = null
 
-    
+    login: (email, password)->
+        @auth.$authWithPassword(
+            email: email
+            password: password
+        )
 
-angular.module('sp90x').service 'appData', DataService
+    logout: ->
+        @auth.$unauth()
+        @$location.path '/login'
+
+    createUser: (email, password, info)->
+        @auth.$createUser(
+            email: email
+            password: password
+        ).then (userData)=>
+            user = @$firebaseObject(new Firebase("#{@URL}/users/#{userData.uid}"))
+            user.uid = userData.uid
+            angular.extend(user, info)
+            user.$save()

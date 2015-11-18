@@ -1,7 +1,7 @@
 _.mixin(s.exports());
 
-angular.module('sp90x', ['ngMaterial', 'firebase', 'ngRoute', 'ngMessages'])
-.config ($mdThemingProvider, $mdIconProvider, $routeProvider)->
+angular.module('sp90x', ['ngMaterial', 'firebase', 'ngRoute', 'ngMessages', 'ui.gravatar'])
+.config ($mdThemingProvider, $mdIconProvider, $routeProvider, gravatarServiceProvider)->
     $mdThemingProvider.theme('default')
         .primaryPalette('grey',
             'default': '900'
@@ -16,6 +16,10 @@ angular.module('sp90x', ['ngMaterial', 'firebase', 'ngRoute', 'ngMessages'])
     $mdIconProvider
         .icon 'menu', './icons/menu-black.svg'
         .icon 'add', './icons/add.svg'
+
+    gravatarServiceProvider.defaults =
+        size: 48
+        default: 'retro'
 
     $routeProvider
         .when '/',

@@ -17,6 +17,11 @@ h1, h2, h3, h4, h5 {
         width: 42px;
     }
 
+    [gravatar-src] {
+        border-radius: 50%;
+        vertical-align: middle;
+    }
+
     .user-name {
         text-align: right;
     }

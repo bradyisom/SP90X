@@ -30,6 +30,7 @@ angular.module('sp90x').service 'appData', class DataService
         ).then (userData)=>
             user = @$firebaseObject(new Firebase("#{@URL}/users/#{userData.uid}"))
             user.uid = userData.uid
+            user.email = email
             angular.extend(user, info)
             user.$save()
 

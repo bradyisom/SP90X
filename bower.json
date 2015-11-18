@@ -20,6 +20,8 @@
     "firebase": "~2.3.1",
     "angular": "~1.4.7",
     "angular-route": "~1.4.7",
-    "angular-messages": "~1.4.7"
+    "angular-messages": "~1.4.7",
+    "lodash": "~3.10.1",
+    "underscore.string": "~3.2.2"
   }
 }

@@ -1,3 +1,5 @@
+_.mixin(s.exports());
+
 angular.module('sp90x', ['ngMaterial', 'firebase', 'ngRoute', 'ngMessages'])
 .config ($mdThemingProvider, $mdIconProvider, $routeProvider)->
     $mdThemingProvider.theme('default')
@@ -13,6 +15,7 @@ angular.module('sp90x', ['ngMaterial', 'firebase', 'ngRoute', 'ngMessages'])
 
     $mdIconProvider
         .icon 'menu', './icons/menu-black.svg'
+        .icon 'add', './icons/add.svg'
 
     $routeProvider
         .when '/',
@@ -24,6 +27,10 @@ angular.module('sp90x', ['ngMaterial', 'firebase', 'ngRoute', 'ngMessages'])
         .when '/register',
             templateUrl: 'authentication/register.html'
             controller: 'LoginCtrl'
+            controllerAs: 'ctrl'
+        .when '/admin',
+            templateUrl: 'admin/admin.html'
+            controller: 'AdminCtrl'
             controllerAs: 'ctrl'
 
 .run (appData)->

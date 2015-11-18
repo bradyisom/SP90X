@@ -1,5 +1,5 @@
 angular.module('sp90x').service 'appData', class DataService
-    constructor: (@$firebaseAuth, @$firebaseObject, @$location, @$rootScope)->
+    constructor: (@$firebaseAuth, @$firebaseObject, @$firebaseArray, @$location, @$rootScope)->
         @URL = 'https://sp90x.firebaseio.com'
         @auth = @$firebaseAuth(new Firebase(@URL))
         
@@ -32,3 +32,6 @@ angular.module('sp90x').service 'appData', class DataService
             user.uid = userData.uid
             angular.extend(user, info)
             user.$save()
+
+    listTasks: ->
+        @$firebaseArray(new Firebase("#{@URL}/tasks"))

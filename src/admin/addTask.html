@@ -1,0 +1,29 @@
+<md-dialog aria-label="Add Task" flex="80">
+<form name="taskForm" layout="column">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Add Task</h2>
+            <span class="flex"></span>
+        </div>
+    </md-toolbar>
+    <md-dialog-content layout="column" layout-padding>
+        <md-input-container>
+            <label>Task Name</label>
+            <input ng-model="task.title" md-autofocus required>
+        </md-input-container>
+        <md-input-container>
+            <label>Task Description</label>
+            <textarea ng-model="task.description" required></textarea>
+        </md-input-container>
+    </md-dialog-content>
+    <md-dialog-actions class="md-actions" layout="row">
+        <md-button ng-click="ctrl.answer(task)"
+            ng-disabled="taskForm.$invalid">
+            OK
+        </md-button>
+        <md-button ng-click="ctrl.cancel()">
+            Cancel
+        </md-button>
+    </md-dialog-actions>
+</form>
+</md-dialog>

@@ -2,6 +2,7 @@ gulp = require 'gulp'
 connect = require 'gulp-connect'
 coffee = require 'gulp-coffee'
 sass = require 'gulp-sass'
+runSequence = require 'run-sequence'
 
 gulp.task 'coffee', ->
     gulp.src('src/**/*.coffee')
@@ -35,5 +36,13 @@ gulp.task 'connect', ->
         livereload: true
     )
 
-gulp.task 'default', ['connect', 'watch-coffee', 'watch-sass', 'watch-html'], ->
+gulp.task 'serve', ->
+    runSequence(
+        ['coffee', 'sass']
+        'connect'
+        ['watch-coffee', 'watch-sass', 'watch-html']
+    )
+
+
+gulp.task 'default', ['serve'], ->
 	

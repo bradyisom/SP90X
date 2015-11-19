@@ -1,28 +1,34 @@
 <md-content layout="column" flex layout-padding>
-    <h2>Admin</h2>
-    <md-tabs md-align-tabs="top" flex md-stretch-tabs="always">
-        <md-tab id="tasks">
+    <md-tabs md-align-tabs="top" flex>
+        <md-tab id="tasks" 
+            md-on-select="ctrl.selectedTab = 'tasks'">
             <md-tab-label>Tasks</md-tab-label>
-            <md-tab-body flex layout-padding>
+            <md-tab-body layout-padding>
                 <md-list>
                     <md-list-item class="md-2-line" ng-repeat="task in ctrl.tasks">
                         <div class="md-list-item-text">
                             <h3>{{task.title}}</h3>
                             <p>{{task.description}}</p>
+                            <md-icon md-svg-icon="delete" 
+                                class="md-secondary"
+                                ng-click="ctrl.deleteButtonClick(task, $event)"
+                                aria-label="Delete">
+                            </md-icon>
                         </div>
                     </md-list-item>
                 </md-list>
-                <md-button class="md-fab" aria-label="Add Task"
-                    ng-click="ctrl.addTask()">
-                    <md-icon md-svg-icon="add"></md-icon>
-                </md-button>
             </md-tab-body>
         </md-tab>
-        <md-tab id="programs">
+        <md-tab id="programs" 
+            md-on-select="ctrl.selectedTab = 'programs'">
             <md-tab-label>Programs</md-tab-label>
             <md-tab-body layout-padding>
                 <p>Programs</p>
             </md-tab-body>
         </md-tab>
     </md-tabs>
+    <md-button class="md-fab md-fab-bottom-right" aria-label="Add Task"
+        ng-click="ctrl.addButtonClick($event)">
+        <md-icon md-svg-icon="add"></md-icon>
+    </md-button>
 </md-content>

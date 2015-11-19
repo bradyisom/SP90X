@@ -9,13 +9,18 @@ angular.module('sp90x', ['ngMaterial', 'firebase', 'ngRoute', 'ngMessages', 'ui.
         .accentPalette('deep-orange')
         .dark()
 
-    $mdThemingProvider.theme('dialog')
-        .primaryPalette('grey')
-        .accentPalette('deep-orange')
+    # $mdThemingProvider.theme('default')
+    #     .primaryPalette('blue')
+    #     .accentPalette('amber')
+
+    # $mdThemingProvider.theme('dialog')
+    #     .primaryPalette('grey')
+    #     .accentPalette('deep-orange')
 
     $mdIconProvider
         .icon 'menu', './icons/menu-black.svg'
         .icon 'add', './icons/add.svg'
+        .icon 'delete', './icons/delete.svg'
 
     gravatarServiceProvider.defaults =
         size: 48

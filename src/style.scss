@@ -44,3 +44,8 @@ md-dialog {
 md-input-container label {
     color: transparentize(white, 0.5);
 }
+
+.md-button.md-fab.md-fab-top-right {
+    top: 4px;
+    right: 4px;
+}

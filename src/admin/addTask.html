@@ -9,15 +9,36 @@
     <md-dialog-content layout="column" layout-padding>
         <md-input-container>
             <label>Task Name</label>
-            <input ng-model="task.title" md-autofocus required>
+            <input ng-model="ctrl.task.title" 
+                name="title" md-autofocus required>
+            <div ng-messages="taskForm.title.$error"
+                ng-if="taskForm.title.$touched">
+                <div ng-message="required">This field is required</div>
+            </div>
         </md-input-container>
         <md-input-container>
             <label>Task Description</label>
-            <textarea ng-model="task.description" required></textarea>
+            <textarea ng-model="ctrl.task.description" 
+                name="description" required></textarea>
+            <div ng-messages="taskForm.description.$error"
+                ng-if="taskForm.description.$touched">
+                <div ng-message="required">This field is required</div>
+            </div>
         </md-input-container>
+        <md-input-container>
+            <label>Points</label>
+            <input type="number" ng-model="ctrl.task.points" required>
+            <div ng-messages="taskForm.title.$error"
+                ng-if="taskForm.title.$touched">
+                <div ng-message="required">This field is required</div>
+                <div ng-message="number">This is not a valid number</div>
+            </div>
+        </md-input-container>
+        <label>Default Interval</label>
+        <task-interval ng-model="ctrl.task.defaultInterval"></task-interval>
     </md-dialog-content>
     <md-dialog-actions class="md-actions" layout="row">
-        <md-button ng-click="ctrl.answer(task)"
+        <md-button ng-click="ctrl.answer(ctrl.task)"
             ng-disabled="taskForm.$invalid">
             OK
         </md-button>

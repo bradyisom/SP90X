@@ -14,6 +14,7 @@ angular.module('sp90x').controller 'AdminCtrl', class AdminCtrl
                 @deleteTask record, ev
 
     addTask: (ev)->
+        @task = {}
         @$mdDialog.show(
             templateUrl: 'admin/addTask.html'
             controller: 'DialogCtrl'
@@ -21,6 +22,7 @@ angular.module('sp90x').controller 'AdminCtrl', class AdminCtrl
             targetEvent: ev
         ).then (task)=>
             return if not task
+            # console.log 'saving task', task
             @tasks.$add task
 
     deleteTask: (task, ev)->

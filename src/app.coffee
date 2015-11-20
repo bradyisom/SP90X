@@ -9,10 +9,6 @@ angular.module('sp90x', ['ngMaterial', 'firebase', 'ngRoute', 'ngMessages', 'ui.
         .accentPalette('deep-orange')
         .dark()
 
-    # $mdThemingProvider.theme('default')
-    #     .primaryPalette('blue')
-    #     .accentPalette('amber')
-
     # $mdThemingProvider.theme('dialog')
     #     .primaryPalette('grey')
     #     .accentPalette('deep-orange')

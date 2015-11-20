@@ -32,3 +32,15 @@ md-sidenav.md-locked-open {
     min-width: 150px !important;
     max-width: 150px !important;
 }
+
+md-dialog {
+    color: white;
+
+    button.md-default-theme.md-primary:not([disabled]) {
+        color: white !important;
+    }
+}
+
+md-input-container label {
+    color: transparentize(white, 0.5);
+}

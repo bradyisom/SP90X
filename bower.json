@@ -23,6 +23,7 @@
     "angular-messages": "~1.4.7",
     "lodash": "~3.10.1",
     "underscore.string": "~3.2.2",
-    "angular-gravatar": "~0.4.1"
+    "angular-gravatar": "~0.4.1",
+    "moment": "~2.10.6"
   }
 }

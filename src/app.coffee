@@ -18,6 +18,7 @@ angular.module('sp90x', ['ngMaterial', 'firebase', 'ngRoute', 'ngMessages', 'ui.
         .icon 'add', './icons/add.svg'
         .icon 'delete', './icons/delete.svg'
         .icon 'edit', './icons/edit.svg'
+        .icon 'save', './icons/save.svg'
 
     gravatarServiceProvider.defaults =
         size: 48
@@ -38,5 +39,14 @@ angular.module('sp90x', ['ngMaterial', 'firebase', 'ngRoute', 'ngMessages', 'ui.
             templateUrl: 'admin/admin.html'
             controller: 'AdminCtrl'
             controllerAs: 'ctrl'
+        .when '/schedule',
+            templateUrl: 'schedule/list.html'
+            controller: 'ScheduleListCtrl'
+            controllerAs: 'ctrl'
+        .when '/schedule/:scheduleId',
+            templateUrl: 'schedule/edit.html'
+            controller: 'ScheduleCtrl'
+            controllerAs: 'ctrl'
+
 
 .run (appData)->

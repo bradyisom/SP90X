@@ -133,7 +133,7 @@
                 ".read": "auth != null && $user_id == auth.uid",
                 ".write": "auth != null && $user_id == auth.uid",
                 "$schedule_id": {
-                    ".validate": "newData.hasChildren(['programTitle', 'startDate', 'endDate', 'tasks'])",
+                    ".validate": "newData.hasChildren(['programTitle', 'startDate', 'endDate'])",
                     "programTitle": {
                         ".validate": "newData.isString()"    
                     },

@@ -1,0 +1,43 @@
+<md-content layout="column" flex>
+    <md-toolbar md-scroll-shrink>
+        <div class="md-toolbar-tools">
+            <h3>
+                <span>Edit Schedule</span>
+            </h3>
+            <span flex></span>
+            <md-button class="md-fab md-mini" aria-label="Save"
+                ng-click="ctrl.saveButtonClick($event)">
+                <md-icon md-svg-icon="save"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <div layout="column" layout-padding>
+        <md-card layout-padding class="md-hue-1">
+            <md-input-container>
+                <label>Program</label>
+                <md-select ng-model="ctrl.schedule.program">
+                    <md-option ng-repeat="program in ctrl.programs"
+                        value="{{program.$id}}">
+                        {{program.title}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+            <md-datepicker class="md-hue-1"
+                ng-model="ctrl.schedule.startDate"
+                md-placeholder="Start date"></md-datepicker>
+        </md-card>
+        <md-list class="md-1-line">
+            <md-list-item ng-repeat="task in ctrl.tasks | orderBy:'defaultInterval'">
+                <md-list-item-text>
+                    <span>
+                        <b>{{ctrl.getTaskInterval(task) | taskInterval}}</b> -
+                        {{task.title}}
+                        <span ng-if="task.abbr">({{task.abbr}})</span>
+                        - {{task.description}}
+                    </span>
+                </md-list-item-text>
+            </md-list-item>
+        </md-list>
+    </div>
+
+</md-content>

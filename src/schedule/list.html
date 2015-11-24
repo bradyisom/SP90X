@@ -1,0 +1,38 @@
+<md-content layout="column" flex>
+    <md-toolbar md-scroll-shrink>
+        <div class="md-toolbar-tools">
+            <h3>
+                <span>Schedules</span>
+            </h3>
+            <span flex></span>
+            <md-button class="md-fab md-mini" aria-label="Add"
+                ng-click="ctrl.addButtonClick($event)">
+                <md-icon md-svg-icon="add"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <p ng-if="!ctrl.schedules.length" layout-padding>
+        You do not have any schedules.
+        Click the plus button to add one.
+    </p>
+    <md-list ng-if="ctrl.schedules.length" layout-padding>
+        <md-list-item class="md-2-line" ng-repeat="schedule in ctrl.schedules">
+            <div class="md-list-item-text">
+                <h3>
+                    {{schedule.programTitle}}
+                </h3>
+                <p>{{schedule.startDate | date}} - {{schedule.endDate | date}}</p>
+                <md-icon md-svg-icon="delete" 
+                    class="md-secondary"
+                    ng-click="ctrl.deleteButtonClick(schedule, $event)"
+                    aria-label="Delete">
+                </md-icon>
+                <md-icon md-svg-icon="edit" 
+                    class="md-secondary"
+                    ng-click="ctrl.editButtonClick(schedule, $event)"
+                    aria-label="Edit">
+                </md-icon>
+            </div>
+        </md-list-item>
+    </md-list>
+</md-content>

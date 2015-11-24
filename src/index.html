@@ -15,6 +15,7 @@
         <script src="/bower_components/angular-material/angular-material.min.js"></script>
         <script src="/bower_components/angular-gravatar/build/angular-gravatar.min.js"></script>
         <script src="/bower_components/lodash/lodash.min.js"></script>
+        <script src="/bower_components/moment/min/moment.min.js"></script>
         <script src="/bower_components/underscore.string/dist/underscore.string.min.js"></script>
         <script src="/bower_components/firebase/firebase-debug.js"></script>
         <script src="/bower_components/angularfire/dist/angularfire.min.js"></script>
@@ -23,14 +24,17 @@
         <script src="/menu.js"></script>
         <script src="/dialog.js"></script>
         <script src="/services/dataService.js"></script>
+        <script src="/services/taskIntervalFilter.js"></script>
         <script src="/components/taskInterval.js"></script>
         <script src="/authentication/login.js"></script>
         <script src="/admin/admin.js"></script>
+        <script src="/schedule/list.js"></script>
+        <script src="/schedule/edit.js"></script>
 
     </head>
     <body layout="column" ng-cloak ng-app="sp90x"
         ng-controller="Menu as ctrl">
-        <md-toolbar layout="row">
+        <md-toolbar layout="row" class="md-hue-1">
             <div class="md-toolbar-tools" layout="row">
                 <md-button ng-click="ctrl.toggleSidenav('left')" hide-gt-sm class="md-icon-button">
                     <md-icon aria-label="Menu" md-svg-icon="menu">
@@ -48,6 +52,11 @@
                 <md-button class="md-accent" 
                     ng-click="ctrl.go('/')">
                     Home
+                </md-button>
+                <md-button class="md-accent" 
+                    ng-if="user"
+                    ng-click="ctrl.go('/schedule')">
+                    Schedules
                 </md-button>
                 <md-button class="md-accent" 
                     ng-if="!user"

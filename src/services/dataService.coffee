@@ -2,16 +2,24 @@ angular.module('sp90x').service 'appData', class DataService
     constructor: (@$firebaseAuth, @$firebaseObject, @$firebaseArray, @$location, @$rootScope)->
         @URL = 'https://sp90x.firebaseio.com'
         @auth = @$firebaseAuth(new Firebase(@URL))
-        
-        @auth.$onAuth (authData)=>
-            console.log 'onAuth', authData?.uid
+
+
+        updateAuthData = (authData)=>
+            # console.log 'onAuth', authData
             if authData
-                @user = @$firebaseObject(new Firebase("#{@URL}/users/#{authData.uid}"))
-                @user.$bindTo(@$rootScope, 'user').then =>
-                    console.log @$rootScope.user
+                @$rootScope.user = @user = authData
+                user = @$firebaseObject(new Firebase("#{@URL}/users/#{authData.uid}"))
+                user.$bindTo(@$rootScope, 'user').then =>
+                    @user = user
+                    # console.log @$rootScope.user
             else if @user
                 @user.$destroy()
                 @$rootScope.user = null
+
+        updateAuthData @auth.$getAuth()
+        
+        @auth.$onAuth (authData)=>
+            updateAuthData authData
 
     login: (email, password)->
         @auth.$authWithPassword(
@@ -34,6 +42,9 @@ angular.module('sp90x').service 'appData', class DataService
             angular.extend(user, info)
             user.$save()
 
+    getRandomId: ->
+        Math.round(Math.random() * 100000000)
+        
     listTasks: ->
         @$firebaseArray(new Firebase("#{@URL}/tasks"))
 
@@ -42,3 +53,9 @@ angular.module('sp90x').service 'appData', class DataService
 
     listPrograms: ->
         @$firebaseArray(new Firebase("#{@URL}/programs"))
+
+    listSchedules: ->
+        @$firebaseArray(new Firebase("#{@URL}/schedules/#{@user.uid}"))
+
+    loadSchedule: (scheduleId)->
+        @$firebaseObject(new Firebase("#{@URL}/schedules/#{@user.uid}/#{scheduleId}"))

@@ -1,44 +1,44 @@
-<md-radio-group ng-model="ui.intervalType" layout="row">
-    <md-radio-button value="custom" aria-label="Certain Days" flex="20">
-        Certain Days
-    </md-radio-button>
-    <md-radio-button value="daily" aria-label="Daily" flex="20">
+<md-radio-group ng-model="ui.intervalType" layout="row" layout-sm="column">
+    <md-radio-button value="daily" aria-label="Daily" flex-gt-sm="20" flex-sm="none" flex-order="1">
         Daily
     </md-radio-button>
-    <md-radio-button value="weekly" aria-label="Weekly" flex="20">
+    <md-radio-button value="weekly" aria-label="Weekly" flex-gt-sm="20" flex-sm="none" flex-order="2">
         Weekly
     </md-radio-button>
-    <md-radio-button value="monthly" aria-label="Monthly" flex="20">
+    <md-radio-button value="monthly" aria-label="Monthly" flex-gt-sm="20" flex-sm="none" flex-order="3">
         Monthly
+    </md-radio-button>
+    <md-radio-button value="custom" aria-label="Certain Days" flex-gt-sm="20" flex-sm="none" flex-order-sm="4" flex-order-gt-sm="-1">
+        Certain Days
     </md-radio-button>
 </md-radio-group>
 <div layout="row" layout-wrap flex-offset="5">
-    <md-checkbox ng-model="ui.days.Mo" aria-label="Monday" flex="20"
+    <md-checkbox ng-model="ui.days.Mo" aria-label="Monday" flex-gt-sm="20" flex-sm="none"
         ng-disabled="ui.intervalType !== 'custom'">
-        Monday
+        Mon
     </md-checkbox>
-    <md-checkbox ng-model="ui.days.Tu" aria-label="Tuesday" flex="20"
+    <md-checkbox ng-model="ui.days.Tu" aria-label="Tuesday" flex-gt-sm="20" flex-sm="none"
         ng-disabled="ui.intervalType !== 'custom'">
-        Tuesday
+        Tue
     </md-checkbox>
-    <md-checkbox ng-model="ui.days.We" aria-label="Wednesday" flex="20"
+    <md-checkbox ng-model="ui.days.We" aria-label="Wednesday" flex-gt-sm="20" flex-sm="none"
         ng-disabled="ui.intervalType !== 'custom'">
-        Wednesday
+        Wed
     </md-checkbox>
-    <md-checkbox ng-model="ui.days.Th" aria-label="Thursday" flex="20"
+    <md-checkbox ng-model="ui.days.Th" aria-label="Thursday" flex-gt-sm="20" flex-sm="none"
         ng-disabled="ui.intervalType !== 'custom'">
-        Thursday
+        Thu
     </md-checkbox>
-    <md-checkbox ng-model="ui.days.Fr" aria-label="Friday" flex="20"
+    <md-checkbox ng-model="ui.days.Fr" aria-label="Friday" flex-gt-sm="20" flex-sm="none"
         ng-disabled="ui.intervalType !== 'custom'">
-        Friday
+        Fri
     </md-checkbox>
-    <md-checkbox ng-model="ui.days.Sa" aria-label="Saturday" flex="20"
+    <md-checkbox ng-model="ui.days.Sa" aria-label="Saturday" flex-gt-sm="20" flex-sm="none"
         ng-disabled="ui.intervalType !== 'custom'">
-        Saturday
+        Sat
     </md-checkbox>
-    <md-checkbox ng-model="ui.days.Su" aria-label="Sunday" flex="20"
+    <md-checkbox ng-model="ui.days.Su" aria-label="Sunday" flex-gt-sm="20" flex-sm="none"
         ng-disabled="ui.intervalType !== 'custom'">
-        Sunday
+        Sun
     </md-checkbox>
 </div>

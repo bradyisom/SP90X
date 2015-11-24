@@ -96,6 +96,21 @@
                 }
             }
         },
+        "subTasks": {
+            ".read": true,
+            ".write": "auth != null && root.child('users').child(auth.uid).child('isAdmin').val() === true",
+            "$task_id": {
+                "$subTask_id": {
+                    ".validate": "newData.hasChildren(['title', 'order'])",
+                    "order": {
+                        ".validate": "newData.isNumber()"    
+                    },
+                    "title": {
+                        ".validate": "newData.isString()"    
+                    }
+                }
+            }
+        },
         "programs": {
             ".read": true,
             "$program_id": {

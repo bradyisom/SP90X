@@ -40,6 +40,12 @@
             defaultInterval: 'daily|weekly|monthly|[Mo|Tu|We|Th|Fr|Sa|Su]+'
         }    
     ],
+    subTasks: [
+        $task_id: [
+            order: <number>,
+            title: <string>
+        ]
+    ]
     programs: [
         $program_id: {
             title: <string>,

@@ -36,3 +36,9 @@ angular.module('sp90x').service 'appData', class DataService
 
     listTasks: ->
         @$firebaseArray(new Firebase("#{@URL}/tasks"))
+
+    listSubTasks: (taskId)->
+        @$firebaseArray(new Firebase("#{@URL}/subTasks/#{taskId}"))
+
+    listPrograms: ->
+        @$firebaseArray(new Firebase("#{@URL}/programs"))

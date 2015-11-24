@@ -17,6 +17,7 @@ angular.module('sp90x', ['ngMaterial', 'firebase', 'ngRoute', 'ngMessages', 'ui.
         .icon 'menu', './icons/menu-black.svg'
         .icon 'add', './icons/add.svg'
         .icon 'delete', './icons/delete.svg'
+        .icon 'edit', './icons/edit.svg'
 
     gravatarServiceProvider.defaults =
         size: 48

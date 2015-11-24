@@ -1,5 +1,5 @@
 angular.module('sp90x').controller 'AdminCtrl', class AdminCtrl
-    constructor: (@appData, @$mdDialog)->
+    constructor: (@$scope, @appData, @$mdDialog)->
 
         @tasks = @appData.listTasks()
 
@@ -13,17 +13,41 @@ angular.module('sp90x').controller 'AdminCtrl', class AdminCtrl
             when 'tasks' 
                 @deleteTask record, ev
 
+    editButtonClick: (record, ev)->
+        switch @selectedTab
+            when 'tasks' 
+                @editTask record, ev
+
     addTask: (ev)->
         @task = {}
         @$mdDialog.show(
             templateUrl: 'admin/addTask.html'
             controller: 'DialogCtrl'
-            controllerAs: 'ctrl'
+            controllerAs: 'dlg'
+            scope: @$scope
+            preserveScope: true
             targetEvent: ev
         ).then (task)=>
             return if not task
-            # console.log 'saving task', task
             @tasks.$add task
+
+    editTask: (task, ev)->
+        @isEditing = true
+        @task = angular.copy(task)
+        @$mdDialog.show(
+            templateUrl: 'admin/addTask.html'
+            controller: 'DialogCtrl'
+            controllerAs: 'dlg'
+            scope: @$scope
+            preserveScope: true
+            targetEvent: ev
+        ).then (newTask)=>
+            return if not newTask
+            angular.extend(task, newTask)
+            @tasks.$save task
+        .finally =>
+            @isEditing = false
+
 
     deleteTask: (task, ev)->
         @$mdDialog.show( @$mdDialog.confirm()

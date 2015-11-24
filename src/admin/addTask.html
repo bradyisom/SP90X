@@ -2,7 +2,8 @@
 <form name="taskForm" layout="column">
     <md-toolbar>
         <div class="md-toolbar-tools">
-            <h2>Add Task</h2>
+            <h2 ng-if="!ctrl.isEditing">Add Task</h2>
+            <h2 ng-if="ctrl.isEditing">Edit Task</h2>
             <span class="flex"></span>
         </div>
     </md-toolbar>
@@ -34,15 +35,17 @@
                 <div ng-message="number">This is not a valid number</div>
             </div>
         </md-input-container>
-        <label>Default Interval</label>
-        <task-interval ng-model="ctrl.task.defaultInterval"></task-interval>
+        <fieldset class="standard">
+            <legend>Default Interval</legend>
+            <task-interval ng-model="ctrl.task.defaultInterval"></task-interval>
+        </fieldset>
     </md-dialog-content>
     <md-dialog-actions class="md-actions" layout="row">
-        <md-button ng-click="ctrl.answer(ctrl.task)"
+        <md-button ng-click="dlg.answer(ctrl.task)"
             ng-disabled="taskForm.$invalid">
             OK
         </md-button>
-        <md-button ng-click="ctrl.cancel()">
+        <md-button ng-click="dlg.cancel()">
             Cancel
         </md-button>
     </md-dialog-actions>

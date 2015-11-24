@@ -49,3 +49,9 @@ md-input-container label {
     top: 4px;
     right: 4px;
 }
+
+md-list-item {
+    md-icon.md-secondary:nth-of-type(2) {
+        right: 56px;
+    }
+}

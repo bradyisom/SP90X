@@ -1,0 +1,56 @@
+<md-content flex>
+    <md-toolbar md-scroll-shrink>
+        <div class="md-toolbar-tools">
+            <h3>
+                <span>Tracking</span>
+            </h3>
+            <span flex></span>
+            <md-datepicker class="md-hue-3"
+                ng-model="ctrl.currentDate"
+                ng-change="ctrl.loadCurrentSchedule()"
+                md-placeholder="Date"></md-datepicker>
+        </div>
+    </md-toolbar>
+    <div layout="column" layout-padding>
+        <md-card ng-if="ctrl.schedule" class="md-hue-1">
+            <md-card-content layout="column">
+                <h2>{{ctrl.schedule.programTitle}} (Day {{ctrl.day}})</h2>
+                <p>{{ctrl.startDate | date}} - {{ctrl.endDate | date}}</p>
+                <md-list>
+                    <md-subheader class="md-no-sticky">Daily Tasks
+                </md-subheader>
+                    <md-list-item ng-repeat="task in ctrl.tasks.daily">
+                        <p>{{task.title}} ({{task.points || 0}} pts)</p>
+                        <md-checkbox class="md-secondary"
+                            ng-model="ctrl.checked[task.$id]">
+                        </md-checkbox>
+                    </md-list-item>
+                    <md-subheader class="md-no-sticky"
+                        ng-if="ctrl.tasks.weekly.length">Weekly Tasks
+                    </md-subheader>
+                    <md-list-item ng-repeat="task in ctrl.tasks.weekly">
+                        <p>{{task.title}} ({{task.points || 0}} pts)</p>
+                        <md-checkbox class="md-secondary"
+                            ng-model="ctrl.checked[task.$id]">
+                        </md-checkbox>
+                    </md-list-item>
+                    <md-subheader class="md-no-sticky" 
+                        ng-if="ctrl.tasks.monthly.length">Monthly Tasks
+                    </md-subheader>
+                    <md-list-item ng-repeat="task in ctrl.tasks.monthly">
+                        <p>{{task.title}} ({{task.points || 0}} pts)</p>
+                        <md-checkbox class="md-secondary"
+                            ng-model="ctrl.checked[task.$id]">
+                        </md-checkbox>
+                    </md-list-item>
+                <md-list>
+            </md-card-content>
+        </md-card>
+        <md-card ng-if="!ctrl.schedule" class="md-hue-1">
+            <md-card-content>
+                <h2>No active schedules</h2>
+                <p>Create a schedule to start tracking.</p>
+            </md-card-content>
+        </md-card>
+    </div>
+</md-content>

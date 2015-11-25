@@ -30,6 +30,7 @@
         <script src="/admin/admin.js"></script>
         <script src="/schedule/list.js"></script>
         <script src="/schedule/edit.js"></script>
+        <script src="/tracking/tracking.js"></script>
 
     </head>
     <body layout="column" ng-cloak ng-app="sp90x"
@@ -52,6 +53,10 @@
                 <md-button class="md-accent" 
                     ng-click="ctrl.go('/')">
                     Home
+                </md-button>
+                <md-button class="md-accent" 
+                    ng-click="ctrl.go('/tracking')">
+                    Tracking
                 </md-button>
                 <md-button class="md-accent" 
                     ng-if="user"

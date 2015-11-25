@@ -16,7 +16,7 @@
         Click the plus button to add one.
     </p>
     <md-list ng-if="ctrl.schedules.length" layout-padding>
-        <md-list-item class="md-2-line" ng-repeat="schedule in ctrl.schedules">
+        <md-list-item class="md-2-line" ng-repeat="schedule in ctrl.schedules | orderBy:'startDate'">
             <div class="md-list-item-text">
                 <h3>
                     {{schedule.programTitle}}

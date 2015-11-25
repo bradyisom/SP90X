@@ -30,12 +30,23 @@ angular.module('sp90x').controller 'ScheduleCtrl', class ScheduleCtrl
         start = moment(@schedule.startDate)
         end = moment(start).add(90, 'days')
         program = _.find(@programs, $id: @schedule.program)
+        return if not program or not start.isValid()
         newSchedule = 
             programTitle: program.title
             startDate: start.toISOString()
             endDate: end.toISOString()
-            # tasks: @schedule.program.tasks
+            # tasks: program.tasks
 
         angular.extend(@scheduleObj, newSchedule)
         @scheduleObj.$save()
+
+        scheduleTasks = @appData.loadScheduleTasks(@scheduleObj.$id)
+        scheduleTasks.$loaded =>
+            for taskId,val of program.tasks
+                scheduleTasks[taskId] = val
+            scheduleTasks.$save()
+
+            @$location.path '/schedule'
+
+    backButtonClick: ->
         @$location.path '/schedule'

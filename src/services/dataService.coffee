@@ -43,7 +43,7 @@ angular.module('sp90x').service 'appData', class DataService
             user.$save()
 
     getRandomId: ->
-        Math.round(Math.random() * 100000000)
+        Math.round(Math.random() * 10000000000)
         
     listTasks: ->
         @$firebaseArray(new Firebase("#{@URL}/tasks"))
@@ -59,3 +59,7 @@ angular.module('sp90x').service 'appData', class DataService
 
     loadSchedule: (scheduleId)->
         @$firebaseObject(new Firebase("#{@URL}/schedules/#{@user.uid}/#{scheduleId}"))
+
+    loadScheduleTasks: (scheduleId)->
+        @$firebaseObject(new Firebase("#{@URL}/schedules/#{@user.uid}/#{scheduleId}/tasks"))
+

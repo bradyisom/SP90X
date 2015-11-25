@@ -130,6 +130,17 @@ angular.module('sp90x').controller 'AdminCtrl', class AdminCtrl
             points: 1
             defaultInterval: 'Tu,Fr'
 
+        loadTask 'FASTING',
+            title: 'Fasting'
+            description: 'Fast for two meals at least each month on Fast Sunday with a purpose'
+            points: 20
+            defaultInterval: 'monthly'
+
+        loadTask 'TEMPLE',
+            title: 'Temple Attendance'
+            description: 'If you hold a temple recommend, attend the temple at least once a month'
+            points: 20
+            defaultInterval: 'monthly'
 
         loadTask 'BOFM90',
             title: 'Book of Mormon 90'
@@ -222,6 +233,8 @@ angular.module('sp90x').controller 'AdminCtrl', class AdminCtrl
             'PONDER': 'daily'
             'SERVICE': 'daily'
             'JOURNAL': 'daily'
+            'FASTING': 'monthly'
+            'TEMPLE': 'monthly'
 
         loadProgram 'CLASSIC-W', 
             title: 'SP90X Classic - Women'
@@ -237,4 +250,6 @@ angular.module('sp90x').controller 'AdminCtrl', class AdminCtrl
             'PONDER': 'daily'
             'SERVICE': 'daily'
             'JOURNAL': 'daily'
+            'FASTING': 'monthly'
+            'TEMPLE': 'monthly'
 

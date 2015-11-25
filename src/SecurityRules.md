@@ -150,9 +150,8 @@
                         ".validate": "newData.isNumber()"    
                     },
                     "tasks": {
-                        ".validate": "root.child('tasks/' + newData.val()).exists()",
                         "$task_id": {
-                            ".validate": "newData.val().matches(/^(daily|weekly|monthly|((Mo|Tu|We|Th|Fr|Sa|Su)(,(Mo|Tu|We|Th|Fr|Sa|Su))*))$/)"
+                            ".validate": "root.child('tasks').hasChild($task_id) && newData.val().matches(/^(daily|weekly|monthly|((Mo|Tu|We|Th|Fr|Sa|Su)(,(Mo|Tu|We|Th|Fr|Sa|Su))*))$/)"
                         }
                     },
                     "entries": {
